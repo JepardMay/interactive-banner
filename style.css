@@ -221,6 +221,9 @@ body {
   pointer-events: initial;
   -webkit-transform: translateX(-50%) scale(1);
           transform: translateX(-50%) scale(1);
+}
+
+.btn.pulsing {
   -webkit-animation: pulse 5s infinite;
   animation: pulse 5s infinite;
 }

@@ -2,12 +2,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const draggables = document.querySelectorAll('.product');
   const cart = document.getElementById('cart');
   const banner = document.querySelector('.banner');
+  const btn = document.getElementById('cart-btn');
 
   function checkItemsCount() {
     const items = cart.querySelectorAll('.product');
 
     if (items.length > 2) {
       banner.classList.add('active');
+
+      btn.addEventListener('transitionend', () => {
+        btn.classList.add('pulsing');
+      });
     }
   }
 
