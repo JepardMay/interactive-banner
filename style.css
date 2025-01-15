@@ -1,0 +1,231 @@
+:root {
+  --text-color: #21201F;
+  --background-color: #EDF6FF;
+  --primary-color: #FCE000;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.0625rem;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.75rem 2.75rem;
+  overflow: hidden;
+}
+
+.stall {
+  position: relative;
+}
+
+.stall-img {
+  width: 13.211rem;
+  height: 26.959rem;
+}
+
+.cart {
+  position: relative;
+  z-index: 2;
+  margin-top: -5.6875rem;
+}
+
+.cart .dropped {
+  top: unset;
+  bottom: 9.875rem;
+}
+
+.cart-img {
+  position: relative;
+  z-index: 12;
+  width: 17.25rem;
+  height: 20.317rem;
+}
+
+.product {
+  position: absolute;
+  z-index: 2;
+  cursor: grab;
+  touch-action: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.product svg {
+  width: 100%;
+  height: 100%;
+}
+
+.product:hover {
+  transform: scale(1.1);
+}
+
+.dragging {
+  transform: scale(1.2);
+}
+
+.dropped {
+  transform: scale(1.3);
+  animation: drop 0.5s linear forwards;
+}
+
+.wine {
+  top: -0.125rem;
+  left: 1.3125rem;
+  width: 2.313rem;
+  height: 7.758rem;
+}
+
+.milk {
+  top: 1.9375rem;
+  left: 4rem;
+  width: 2.313rem;
+  height: 5.671rem;
+}
+
+.jam {
+  top: 5rem;
+  left: 6.4375rem;
+  width: 2.875rem;
+  height: 2.584rem;
+}
+
+.cheese {
+  top: 5.5625rem;
+  left: 9.875rem;
+  width: 2.263rem;
+  height: 2.149rem;
+}
+
+.meat {
+  top: 10.4375rem;
+  left: 0.4375rem;
+  width: 3.375rem;
+  height: 3.298rem;
+}
+
+.chicken {
+  top: 10.5625rem;
+  left: 3.625rem;
+  width: 4.092rem;
+  height: 3.803rem;
+}
+
+.chips {
+  top: 10.9375rem;
+  left: 8rem;
+  width: 4.761rem;
+  height: 2.936rem;
+}
+
+.pineapple {
+  top: 14.875rem;
+  left: 0.8125rem;
+  width: 2.188rem;
+  height: 4.63rem;
+}
+
+.bananas {
+  top: 16.5625rem;
+  left: 3.5625rem;
+  width: 2.938rem;
+  height: 2.963rem;
+}
+
+.apple {
+  top: 17.25rem;
+  left: 7.1875rem;
+  width: 1.938rem;
+  height: 2.249rem;
+}
+
+.greens {
+  top: 16.6875rem;
+  left: 9.6875rem;
+  width: 3.859rem;
+  height: 3.186rem;
+}
+
+.btn {
+  position: absolute;
+  z-index: 13;
+  left: 50%;
+  bottom: 9.25rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 11.1875rem;
+  padding: 1.25rem 1.125rem;
+  font: inherit;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 1rem;
+  transform: translateX(-50%) scale(3);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+}
+
+.active .cart {
+  animation: moving 5s cubic-bezier(.77,.07,.29,.94) infinite alternate;
+}
+
+.active .btn {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+  transform: translateX(-50%) scale(1);
+}
+
+.active .btn:hover,
+.active .btn:focus {
+  opacity: 0.8;
+  transform: translateX(-50%) scale(1.1);
+  outline: none;
+}
+
+@keyframes moving {
+  0% {
+    transform: translateX(-0.625rem);
+  }
+
+  100% {
+    transform: translateX(0.625rem);
+  }
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-9.375rem) rotate(180deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
