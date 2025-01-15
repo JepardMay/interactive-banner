@@ -2,6 +2,9 @@
   --text-color: #21201F;
   --background-color: #EDF6FF;
   --primary-color: #FCE000;
+  --active-color: #FFE93E;
+  --shadow-color: rgba(255, 233, 62, 0.7);
+  --shadow-transparent-color: rgba(255, 233, 62, 0);
 }
 
 *,
@@ -177,7 +180,7 @@ body {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  max-width: calc(100% - 20px);
+  max-width: calc(100% - 1.25rem);
   min-width: 11.1875rem;
   padding: 1.25rem 1.125rem;
   font: inherit;
@@ -192,13 +195,16 @@ body {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.3s ease-in-out,
+  transition: background-color 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
     visibility 0.3s ease-in-out,
     -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out,
+  transition: background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out,
     visibility 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out,
+  transition: background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out,
     visibility 0.3s ease-in-out,
     -webkit-transform 0.3s ease-in-out;
@@ -215,14 +221,58 @@ body {
   pointer-events: initial;
   -webkit-transform: translateX(-50%) scale(1);
           transform: translateX(-50%) scale(1);
+  -webkit-animation: pulse 5s infinite;
+  animation: pulse 5s infinite;
 }
 
 .active .btn:hover,
 .active .btn:focus {
-  opacity: 0.8;
-  -webkit-transform: translateX(-50%) scale(1.1);
-          transform: translateX(-50%) scale(1.1);
+  background-color: var(--active-color);
   outline: none;
+}
+
+@-webkit-keyframes pulse {
+    0%,
+    60% {
+        -webkit-transform: translateX(-50%) scale(1);
+                transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 0 0 var(--shadow-color);
+    }
+
+    70% {
+        -webkit-transform: translateX(-50%) scale(1.05);
+                transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 0 0 0.625rem var(--shadow-transparent-color);
+    }
+
+    80%,
+    100% {
+        -webkit-transform: translateX(-50%) scale(1);
+                transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 0 0 var(--shadow-transparent-color);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    60% {
+        -webkit-transform: translateX(-50%) scale(0.95);
+                transform: translateX(-50%) scale(0.95);
+        box-shadow: 0 0 0 0 var(--shadow-color);
+    }
+
+    70% {
+        -webkit-transform: translateX(-50%) scale(1);
+                transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 0 0.625rem var(--shadow-transparent-color);
+    }
+
+    80%,
+    100% {
+        -webkit-transform: translateX(-50%) scale(0.95);
+                transform: translateX(-50%) scale(0.95);
+        box-shadow: 0 0 0 0 var(--shadow-transparent-color);
+    }
 }
 
 @-webkit-keyframes moving {
