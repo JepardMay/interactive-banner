@@ -177,7 +177,8 @@ body {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 11.1875rem;
+  max-width: calc(100% - 20px);
+  min-width: 11.1875rem;
   padding: 1.25rem 1.125rem;
   font: inherit;
   letter-spacing: 0.03em;
